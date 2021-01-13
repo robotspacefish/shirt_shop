@@ -1,0 +1,31 @@
+<%= form_for(@shirt) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br>
+<%= f.label :description %>
+<%= f.text_area :description, size: "40x3" %>
+<br>
+
+<%= f.label :color %>
+<%= f.text_field :color %>
+<br>
+
+<%= f.label :price %>
+<%= f.number_field :price_in_cents %>
+<br>
+
+<fieldset>
+  <legend>Size</legend>
+  <%= f.label :small %>
+  <%= f.radio_button :size, "S" %>
+  <%= f.label :medium %>
+  <%= f.radio_button :size, "M" %>
+  <%= f.label :large %>
+  <%= f.radio_button :size, "L" %>
+</fieldset>
+<br>
+
+<br>
+<%= f.submit %>
+<% end %>
