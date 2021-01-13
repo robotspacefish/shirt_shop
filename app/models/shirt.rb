@@ -1,4 +1,6 @@
 class Shirt < ApplicationRecord
+  validates :name, :description, :price, :color, :size, presence: true
+
   belongs_to :shop
 
   def price
