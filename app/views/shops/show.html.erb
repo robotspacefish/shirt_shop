@@ -6,6 +6,7 @@
     <th>Description</th>
     <th>Color</th>
     <th>Size</th>
+    <th>Price</th>
   </tr>
 
   <% @shop.shirts.each do |shirt| %>
@@ -14,6 +15,7 @@
     <td><%= shirt.description %></td>
     <td><%= shirt.color %></td>
     <td><%= shirt.size %></td>
+    <td><%= number_with_precision(shirt.price, precision: 2) %></td>
     <td><%= link_to "Edit", edit_shirt_path(shirt) %></td>
     <td>
       <%= form_for(shirt, method: 'delete') do |f| %>
