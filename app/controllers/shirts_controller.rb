@@ -4,12 +4,11 @@ class ShirtsController < ApplicationController
   end
 
   def new
-    # check for valid shop that belongs to current user
-    shop_id = params[:shop_id]
-    if shop_id && shop = Shop.find_by(id: shop_id) && is_current_users_shop?(shop_id)
+    # check for valid shop
+    if params[:shop_id] && shop = Shop.find_by(id: params[:shop_id])
       @shirt = shop.shirts.build
     else
-      render plain: "Invalid Shop"
+      @shirt = Shirt.new
     end
   end
 
