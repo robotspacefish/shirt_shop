@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
       user == current_user
     end
 
+    def is_current_users_shop?(shop_id)
+      current_user.shop.id == shop_id.to_i
+    end
+
     def redirect_if_not_logged_in
       redirect_to login_path if !logged_in?
       flash[:message] =  "You must log in to view that page."
