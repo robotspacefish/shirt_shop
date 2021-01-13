@@ -46,3 +46,5 @@ You will need to seed in order to use this app because there is no signup page t
 
 ## Deployment
 `rails s` to start the server on port 3000
+
+Login with user "admin" password "admin"
