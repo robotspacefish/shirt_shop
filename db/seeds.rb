@@ -5,6 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-u = User.create(username: 'admin', password: 'admin', shop_owner: true)
-s = Shop.create(name: 'Shirts "R" Us')
-u.shop = s
+user = User.create(username: 'admin', password: 'admin', shop_owner: true)
+
+Shop.create(name: 'MyShop')
+
+shop = Shop.create(name: 'Shirts "R" Us')
+
+shirts = [
+  Shirt.create(name: "V-Neck", description: "Maecenas sed diam eget risus varius blandit sit amet non magna.", size: "M", price_in_cents: 2400, color: "red" ),
+  Shirt.create(name: "V-Neck", description: "Maecenas sed diam eget risus varius blandit sit amet non magna.", size: "L", price_in_cents: 2400, color: "black" ),
+  Shirt.create(name: "Ringer", description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod.", size: "S", price_in_cents: 1800, color: "gray" ),
+  Shirt.create(name: "Ringer", description: "Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Etiam porta sem malesuada magna mollis euismod.", size: "L", price_in_cents: 1800, color: "gray" )
+]
+
+user.shop = shop
+shirts.each { |s| shop.shirts << s }
