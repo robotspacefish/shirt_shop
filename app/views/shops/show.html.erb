@@ -1,1 +1,19 @@
-<h1>Manage <%= @shop.name %> Inventory</h1>
+<h1><%= @shop.name %> Inventory</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Color</th>
+    <th>Size</th>
+  </tr>
+
+  <% @shop.shirts.each do |shirt| %>
+  <tr>
+    <td><%= shirt.name %></td>
+    <td><%= shirt.description %></td>
+    <td><%= shirt.color %></td>
+    <td><%= shirt.size %></td>
+  </tr>
+  <% end %>
+</table>
