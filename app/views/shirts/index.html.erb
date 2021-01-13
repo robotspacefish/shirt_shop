@@ -1,28 +1,36 @@
-<% if !@shirts.empty? %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Color</th>
-    <th>Size</th>
-    <th>Price</th>
-  </tr>
+<h1 class="text-center">Shirt Inventory</h1>
 
-  <% @shirts.each do |shirt| %>
-  <tr>
-    <td><%= shirt.name %></td>
-    <td><%= shirt.description %></td>
-    <td><%= shirt.color %></td>
-    <td><%= shirt.size %></td>
-    <td><%= number_with_precision(shirt.price, precision: 2) %></td>
-    <td><%= link_to "Edit", edit_shirt_path(shirt) %></td>
-    <td>
-      <%= form_for(shirt, method: 'delete') do |f| %>
-      <%= f.submit "Remove from Inventory", data: { confirm: 'Are you sure? This cannot be undone.'} %>
-      <% end %>
-    </td>
-  </tr>
-  <% end %>
+<% if !@shirts.empty? %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Color</th>
+      <th>Size</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shirts.each do |shirt| %>
+    <tr>
+      <td><%= shirt.name %></td>
+      <td><%= shirt.description %></td>
+      <td><%= shirt.color %></td>
+      <td><%= shirt.size %></td>
+      <td><%= number_with_precision(shirt.price, precision: 2) %></td>
+      <td><%= link_to "Edit", edit_shirt_path(shirt) %></td>
+      <td>
+        <%= form_for(shirt, method: 'delete') do |f| %>
+        <%= f.submit "Delete", data: { confirm: 'Are you sure? This cannot be undone.'}, class: "btn btn-danger" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 <% else %>
 <p>No Inventory</p>

@@ -11,14 +11,23 @@
 </head>
 
 <body>
-  <nav>
-    <% if logged_in? %>
-    <%= link_to "My Home", user_path(current_user) %> |
-    <%= link_to "Logout", logout_path, method: 'delete' %>
-    <% end %>
-  </nav>
+  <% if logged_in? %>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "My Home", user_path(current_user), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Logout", logout_path, method: 'delete', class: "nav-link" %>
+      </li>
+    </ul>
 
-  <%= yield %>
+  </nav>
+  <% end %>
+
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 
 </html>
