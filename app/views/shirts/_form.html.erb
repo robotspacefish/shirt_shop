@@ -1,3 +1,5 @@
+<%= flash[:message] if flash[:message] %>
+
 <%= form_for(@shirt) do |f| %>
 
 <%= f.label :name %>
@@ -11,7 +13,7 @@
 <%= f.text_field :color %>
 <br>
 
-<%= f.label :price %>
+<%= f.label :price_in_cents %>
 <%= f.number_field :price_in_cents %>
 <br>
 
