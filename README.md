@@ -39,10 +39,10 @@ You will need to seed in order to use this app because there is no signup page t
 # Routes
 * '/' - redirects to login page or user's page depending on current session
 * '/login'
-* '/users/:id - user's home (show) page
-* '/users/:id/shops/:shop_id - user's shop (show) page
-* '/shops/:shop_id/shirts - shop inventory (index), view all shirt info with links to edit/delete
-* '/shops/:shop_id/shirts/new - new shirt form
+* '/users/:id' - user's home (show) page
+* '/users/:id/shops/:shop_id' - user's shop (show) page
+* '/shops/:shop_id/shirts' - shop inventory (index), view all shirt info with links to edit/delete
+* '/shops/:shop_id/shirts/new' - new shirt form
 
 ## Deployment
 `rails s` to start the server on port 3000
