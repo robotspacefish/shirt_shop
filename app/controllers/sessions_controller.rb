@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def index
+    # display login page or user's page depending on if there's a current user in session
     if !logged_in?
       redirect_to login_path
     else
