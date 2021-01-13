@@ -3,6 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+
+    redirect_if_logged_in if !is_current_user?(@user)
   end
 
   private
