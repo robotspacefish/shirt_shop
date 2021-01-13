@@ -4,16 +4,19 @@ class ShirtsController < ApplicationController
   end
 
   def new
-    if params[:shop_id] && shop = Shop.find_by(id: params[:shop_id])
+    # check for valid shop that belongs to current user
+    shop_id = params[:shop_id]
+    if shop_id && shop = Shop.find_by(id: shop_id) && is_current_users_shop?(shop_id)
       @shirt = shop.shirts.build
     else
-      @shirt = Shirt.new
+      render plain: "Invalid Shop"
     end
   end
 
   def create
     @shirt = current_user.shop.shirts.build(shirt_params)
 
+    # make sure all fields are filled in
     if empty_params?(shirt_params.to_h)
       flash[:message] = "Fields cannot be left blank"
       render :new
@@ -21,7 +24,6 @@ class ShirtsController < ApplicationController
       if @shirt.save
         redirect_to shop_shirts_path(current_user.shop)
       end
-
     end
   end
 
