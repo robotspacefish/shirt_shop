@@ -15,6 +15,11 @@
     <td><%= shirt.color %></td>
     <td><%= shirt.size %></td>
     <td><%= link_to "Edit", edit_shirt_path(shirt) %></td>
+    <td>
+      <%= form_for(shirt, method: 'delete') do |f| %>
+      <%= f.submit "Remove from Inventory", data: { confirm: 'Are you sure? This cannot be undone.'} %>
+      <% end %>
+    </td>
   </tr>
   <% end %>
 </table>
