@@ -1,4 +1,12 @@
 class SessionsController < ApplicationController
+  def index
+    if !logged_in?
+      redirect_to login_path
+    else
+      redirect_to user_path(current_user)
+    end
+  end
+
   def create
     user = User.find_by(username: params[:user][:username])
 
