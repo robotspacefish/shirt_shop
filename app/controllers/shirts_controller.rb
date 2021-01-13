@@ -13,10 +13,15 @@ class ShirtsController < ApplicationController
 
   def create
     @shirt = current_user.shop.shirts.build(shirt_params)
-    if @shirt.save
-      redirect_to shop_shirts_path(current_user.shop)
-    else
+
+    if empty_params?(shirt_params.to_h)
+      flash[:message] = "Fields cannot be left blank"
       render :new
+    else
+      if @shirt.save
+        redirect_to shop_shirts_path(current_user.shop)
+      end
+
     end
   end
 
